@@ -46,13 +46,33 @@ def main():
         print("Invalid")
 
 
+def Luhn_alg(card_number):
+    i = 0
+    Luhn_sum = 0
+
+    for num in card_number:
+        i += 1
+        if i % 2 != 0:
+            num = int(num) * 2
+
+        if int(num) > 9:
+            num = int(num) - 9
+
+        Luhn_sum += int(num)
+
+    contr_num = 10 - (Luhn_sum % 10)
+    return contr_num
+
+
 def create_account():
     card_number = []
     card_number.insert(0, 4)
     for i in range(1, 6):
         card_number.insert(i, 0)
-    for i in range(6, 16):
+    for i in range(6, 15):
         card_number.insert(i, random.randrange(0, 9))
+
+    card_number.insert(15, Luhn_alg(card_number))
 
     return (''.join(str(elem) for elem in card_number))
 
