@@ -1,4 +1,9 @@
 import random
+import database
+
+def start():
+    connection = database.connect()
+    database.create_table(connection)
 
 class User:
     def __init__(self, number, pin):
