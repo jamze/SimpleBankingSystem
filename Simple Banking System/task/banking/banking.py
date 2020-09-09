@@ -1,9 +1,36 @@
 import random
-import database
+import sqlite3
 
-def start():
-    connection = database.connect()
-    database.create_table(connection)
+create_table = ("CREATE TABLE IF NOT EXISTS card ("
+                "id INTEGER, "
+                "number TEXT, "
+                "pin TEXT,"
+                "balance INTEGER DEFAULT 0);")
+
+insert_table = '''INSERT INTO card VALUES (?,?,?,?);'''
+
+get_all = 'SELECT * FROM card;'
+
+def connect():
+    return sqlite3.connect('card.s3db')
+
+def create_tables(connection):
+    with connection:
+        return connection.execute(create_table)
+
+def add_value(connection, id, number, pin, balance):
+    with connection:
+        connection.execute(insert_table, (id, number, pin,balance))
+
+def get_all(connection):
+    with connection:
+        return connection.execute('SELECT * FROM card;').fetchall()
+
+
+# def start():
+connection = connect()
+create_tables(connection)
+
 
 class User:
     def __init__(self, number, pin):
@@ -14,9 +41,11 @@ class User:
         def operation(self, money):
             self.balance = money
 
+
 def menu():
     print("1. Create an account")
     print("2. Log into account")
+    print("3. Fetch all")
     print("0. Exit")
 
 
@@ -41,12 +70,23 @@ def main():
         print("\nYour card has been created")
         print("Your card number:")
         print(user1.number)
+
         print("Your card PIN:")
         print(user1.pin)
         print("")
 
+        id = 1
+        number = 2
+        pin = 3
+        balance = 4
+
+        add_value(connection, id, number, pin, balance)
+        connection.commit()
+
     elif value == 2:
         log_into(user1)
+    elif value == 3:
+        get_all(connection)
     else:
         print("Invalid")
 
@@ -66,6 +106,9 @@ def Luhn_alg(card_number):
         Luhn_sum += int(num)
 
     contr_num = 10 - (Luhn_sum % 10)
+
+    if contr_num == 10:
+        contr_num = 0
     return contr_num
 
 
@@ -100,6 +143,7 @@ def log_into(user):
         print("\nYou have successfully logged in!")
         program_log()
 
+
     else:
         print("Wrong card number or PIN!")
         # return 0
@@ -127,3 +171,4 @@ def program_log():
 
 while True:
     main()
+
