@@ -9,10 +9,12 @@ create_table = ("CREATE TABLE IF NOT EXISTS card ("
 
 insert_table = '''INSERT INTO card VALUES (?,?,?,?);'''
 
-get_all = 'SELECT * FROM card;'
+get_all = 'SELECT * FROM card'
 
 def connect():
     return sqlite3.connect('card.s3db')
+
+c = connect().cursor()
 
 def create_tables(connection):
     with connection:
@@ -20,11 +22,12 @@ def create_tables(connection):
 
 def add_value(connection, id, number, pin, balance):
     with connection:
-        connection.execute(insert_table, (id, number, pin,balance))
+        connection.execute(insert_table, (id, number, pin, balance))
 
 def get_all(connection):
     with connection:
-        return connection.execute('SELECT * FROM card;').fetchall()
+        return connection.execute("SELECT * FROM card;").fetchall()
+
 
 
 # def start():
@@ -45,7 +48,6 @@ class User:
 def menu():
     print("1. Create an account")
     print("2. Log into account")
-    print("3. Fetch all")
     print("0. Exit")
 
 
@@ -76,8 +78,8 @@ def main():
         print("")
 
         id = 1
-        number = 2
-        pin = 3
+        number = user1.number
+        pin = user1.pin
         balance = 4
 
         add_value(connection, id, number, pin, balance)
@@ -85,8 +87,15 @@ def main():
 
     elif value == 2:
         log_into(user1)
+        # connection.execute("DROP TABLE card")
+
+
     elif value == 3:
-        get_all(connection)
+        cards = connection.execute("SELECT * FROM card;").fetchall()
+
+        for card in cards:
+            print(card)
+
     else:
         print("Invalid")
 
