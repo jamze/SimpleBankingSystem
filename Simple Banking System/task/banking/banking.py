@@ -11,6 +11,11 @@ insert_table = '''INSERT INTO card VALUES (?,?,?,?);'''
 
 get_all = 'SELECT * FROM card'
 
+get_number = 'SELECT number FROM card WHERE number = ?;'
+
+get_pin = 'SELECT pin FROM card WHERE number = ?;'
+
+
 def connect():
     return sqlite3.connect('card.s3db')
 
@@ -28,6 +33,13 @@ def get_all(connection):
     with connection:
         return connection.execute("SELECT * FROM card;").fetchall()
 
+def get_number(connection, number):
+    with connection:
+        return connection.execute(get_number, (number,)).fetchall()
+
+def get_pin(connection, number):
+    with connection:
+        return connection.execute(get_pin, (number,)).fetchall()
 
 
 # def start():
@@ -53,7 +65,10 @@ def menu():
 
 def menu_log():
     print("\n1. Balance")
-    print("2. Log out")
+    print("2. Add income")
+    print("3. Do tranfer")
+    print("4. Close account")
+    print("5. Log out")
     print("0. Exit")
 
 
@@ -87,14 +102,12 @@ def main():
 
     elif value == 2:
         log_into(user1)
-        # connection.execute("DROP TABLE card")
 
-
-    elif value == 3:
-        cards = connection.execute("SELECT * FROM card;").fetchall()
-
-        for card in cards:
-            print(card)
+    # elif value == 3:
+    #     cards = connection.execute("SELECT * FROM card;").fetchall()
+    #
+    #     for card in cards:
+    #         print(card)
 
     else:
         print("Invalid")
@@ -147,6 +160,8 @@ def log_into(user):
     card_input = input()
     print("Enter your PIN")
     pin_input = input()
+
+    get_number()
 
     if card_input == user.number and pin_input == user.pin:
         print("\nYou have successfully logged in!")
