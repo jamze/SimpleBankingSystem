@@ -1,0 +1,35 @@
+<b>Unknown operation</b> <a class=right href="https://hyperskill.org/learn/step/10335">Open on JetBrains Academy</a>
+<br><br>
+<html>
+ <head></head>
+ <body>
+  <p><span style="background-color: #ffffff; color: #222222; font-size: 12pt; font-variant: normal;"></span></p> 
+  <p></p>
+  <div class="alert alert-warning">
+   Whoa, this problem is very difficult! Try to solve it but if you can't — don't be discouraged, skip it for now, and maybe you will come back and solve it later!
+  </div>
+  <p></p> 
+  <p>There is a function <code class="language-python">hidden_operation()</code> which in every test case performs one of the logical operations: <code class="language-python">and</code>, <code class="language-python">or</code> and <code class="language-python">not</code>.</p> 
+  <pre><code class="language-python">def hidden_operation(operand):
+    if oper == "and":
+        return operand and hidden_operand
+    elif oper == "or":
+        return operand or hidden_operand
+    elif oper == "not":
+        return not operand</code></pre> 
+  <p>You don't have access to <code class="language-python">oper</code> and <code class="language-python">hidden_operand</code> variables, but you can call the <code class="language-python">hidden_operation()</code> function any number of times and pass any objects to it. Your task is to find out which logical operation this function performs and what the <code class="language-python">hidden_operand</code> is equal to (if the function performs the <code class="language-python">not</code> operation, you don't have to find the <code class="language-python">hidden_operand</code>).</p> 
+  <p>Write your code inside the <code class="language-python">solve()</code> function. In the <em>first </em>line <strong>print </strong>the name of the logical operation. If the logical operation is <code class="language-python">and</code> or <code class="language-python">or</code>, <strong>print </strong><code class="language-python">hidden_operand</code> in the <em>second </em>line.</p> 
+  <p>Your program shouldn't read any input or call the function, just implement it.</p> 
+  <p><button class="btn-sm btn-outline-secondary" onclick="getElementById('hint-1636').style.display='inline'"> Hint </button> </p>
+  <div id="hint-1636" style="display:none;">
+   Pass a random non-empty string to the 
+   <code class="language-python">hidden_operation()</code> function. The "not" operator would return 
+   <code class="language-python">False</code>; the "and" operator would return 
+   <code class="language-python">hidden_operand</code>; the "or" operator would return the passed string. If the passed string is complicated enough not to match 
+   <code class="language-python">hidden_operand</code>, this allows you to distinguish the "or" operator from other operators. Then, to distinguish the "and" and "not" operators, pass 
+   <code class="language-python">False</code> to the function.
+  </div>
+  <p></p>
+ </body>
+</html><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 15 seconds</font><br><br>
+<a href="https://hyperskill.org/learn/step/10327">Show topic summary</a>

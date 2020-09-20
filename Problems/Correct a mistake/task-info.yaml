@@ -1,0 +1,21 @@
+type: code
+files:
+- name: task.py
+  visible: true
+  text: |-
+    def compare(numerator, denominator):
+        return denominator and numerator / denominator == 0.5
+
+
+    a = int(input())
+    b = int(input())
+
+    print(compare(a, b))
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10333
+status: Solved
+feedback:
+  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/10333">JetBrains
+    Academy</a></html>
+  time: Sun, 20 Sep 2020 16:06:53 UTC
+record: -1

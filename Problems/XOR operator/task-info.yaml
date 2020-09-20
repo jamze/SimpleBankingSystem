@@ -1,0 +1,15 @@
+type: code
+files:
+- name: task.py
+  visible: true
+  text: |-
+    def xor(a, b):
+        # Write your code here
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10332
+status: Solved
+feedback:
+  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/10332">JetBrains
+    Academy</a></html>
+  time: Sun, 20 Sep 2020 16:43:48 UTC
+record: -1

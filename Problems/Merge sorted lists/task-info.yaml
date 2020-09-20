@@ -1,0 +1,26 @@
+type: code
+files:
+- name: task.py
+  visible: true
+  text: |-
+    def merge_arrays(a, b):
+        # "c" will contain the result of merging arrays "a" and "b"
+        c = []
+        while ...:
+            if ...:
+                # removing the first element from "a" and adding it to "c"
+                c.append(a[0])
+                a.pop(0)
+            else:
+                # removing the first element from "b" and adding it to "c"
+                c.append(b[0])
+                b.pop(0)
+        return c
+  learner_created: false
+feedback_link: https://hyperskill.org/learn/step/10658
+status: Solved
+feedback:
+  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/10658">JetBrains
+    Academy</a></html>
+  time: Sun, 20 Sep 2020 16:23:10 UTC
+record: -1
